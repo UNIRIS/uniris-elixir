@@ -41,15 +41,45 @@ environment :prod do
   set vm_args: "rel/vm.args"
 end
 
+environment :seed do
+  set dev_mode: true
+  set include_erts: false
+  set overlays: [
+    {:copy, "rel/seed_config.exs", "etc/runtime_config.exs"}
+  ]
+  set dev_mode: true
+  set include_erts: false
+  set cookie: :"RiaB^>GKPTNc1@3L2DXQ@*=E|aN8{oT8Vc&K&TK(*^`eVxLp@aYNElwCuz367f2n"
+  set vm_args: "rel/seed_vm.args"
+end
+
+environment :peer1 do
+  set dev_mode: true
+  set include_erts: false
+  set overlays: [
+    {:copy, "rel/peer1_config.exs", "etc/runtime_config.exs"}
+  ]
+  set dev_mode: true
+  set include_erts: false
+  set cookie: :"RiaB^>GKPTNc1@3L2DXQ@*=E|aN8{oT8Vc&K&TK(*^`eVxLp@aYNElwCuz367f2n"
+  set vm_args: "rel/peer1_vm.args"
+end
+
 # You may define one or more releases in this file.
 # If you have not set a default release, or selected one
 # when running `mix release`, the first release in the file
 # will be used by default
 
 release :gossip do
+  set config_providers: [
+    {Mix.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT_DIR}/etc/runtime_config.exs"]}
+  ]
+ 
   set version: current_version(:gossip)
   set applications: [
     :runtime_tools
   ]
+
+  
 end
 

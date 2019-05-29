@@ -1,21 +1,17 @@
 # Gossip
 
-**TODO: Add description**
+Test of Elixir for the P2P Gossip layer
 
-## Installation
+## Running
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `gossip` to your list of dependencies in `mix.exs`:
+Starting two peer gossiping together
 
-```elixir
-def deps do
-  [
-    {:gossip, "~> 0.1.0"}
-  ]
-end
+```sh
+# Terminal 1
+./_build/seed/rel/gossip/bin/gossip foreground
+
+#Terminal 2
+./_build/peer1/rel/gossip/bin/gossip foreground
+
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/gossip](https://hexdocs.pm/gossip).
 
